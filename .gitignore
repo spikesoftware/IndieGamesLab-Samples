@@ -2,4 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/src/IGL.ConsoleClient/obj/Debug
+/src/IGL.ConsoleClient/obj
+/src/IGL.ConsoleClient/bin
+/src/packages
