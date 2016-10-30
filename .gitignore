@@ -5,3 +5,11 @@
 /src/IGL.ConsoleClient/obj
 /src/IGL.ConsoleClient/bin
 /src/packages
+/src/IGL.Cloud/bin
+/src/IGL.Cloud/csx
+/src/IGL.Cloud/IGL.ServiceRoleContent
+/src/IGL.Cloud/obj
+/src/IGL.Cloud/ecf/IGL.ServiceRoleContent
+/src/IGL.Cloud/Profiles/IndieGamesLabProduction.azurePubxml
+/src/IGL.ServiceRole/bin
+/src/IGL.ServiceRole/obj
