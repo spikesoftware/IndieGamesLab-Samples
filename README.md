@@ -15,7 +15,8 @@ Documentation is located at http://indiegameslab.com/.
 ## Echo Client
 The Echo Client sends messages to the service bus and listens for response messages from the Echo Server task.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
 
-## Echo Server reads messages from the service bus, determines the client that sent the message and sends the message back to the client.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
+## Echo Server
+The Echo Server reads messages from the service bus, determines the client that sent the message and sends the message back to the client.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
 
 # Call to action!
 What samples would you like created?  Join the community!  Create an issue or use Contact Us on the [http://indiegameslab.com/](IGL website).
