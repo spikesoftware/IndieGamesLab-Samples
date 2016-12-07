@@ -1,0 +1,11 @@
+{
+  "frameworks": {
+    "net46": {
+      "dependencies": {
+        "WindowsAzure.ServiceBus": "3.4.0",
+        "Newtonsoft.Json": "4.0.1",
+        "IGL.Common": "1.0.5"
+      }
+    }
+  }
+}

@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IGL.Client, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\IGL.Client.1.0.6\lib\net35\IGL.Client.dll</HintPath>
+    <Reference Include="IGL.Client, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IGL.Client.1.0.9\lib\net35\IGL.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IGL.Common, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">

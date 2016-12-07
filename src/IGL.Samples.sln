@@ -9,6 +9,15 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "IGL.Cloud", "IGL.Cloud\IGL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGL.ServiceRole", "IGL.ServiceRole\IGL.ServiceRole.csproj", "{27528F6A-1013-4698-ACE0-9B79709649D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunction", "AzureFunction", "{9272398D-9EA0-4DBB-8D19-B3723AF213C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EchoFunction", "EchoFunction", "{EF21A0E6-F8AB-4349-9C8A-944DEABB4DBD}"
+	ProjectSection(SolutionItems) = preProject
+		AzureFunction\EchoFunction\function.json = AzureFunction\EchoFunction\function.json
+		AzureFunction\EchoFunction\project.json = AzureFunction\EchoFunction\project.json
+		AzureFunction\EchoFunction\run.csx = AzureFunction\EchoFunction\run.csx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +39,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF21A0E6-F8AB-4349-9C8A-944DEABB4DBD} = {9272398D-9EA0-4DBB-8D19-B3723AF213C9}
 	EndGlobalSection
 EndGlobal

@@ -13,6 +13,8 @@ namespace IGL.ConsoleClient
     class Program
     {
         static Stopwatch _stopwath = new Stopwatch();
+        static int _sent = 0;
+        static int _received = 0;
 
         static void Main(string[] args)
         {
@@ -22,56 +24,72 @@ namespace IGL.ConsoleClient
             Console.WriteLine("Starting the Echo test...");
 
             // set the following once - this is using ACS            
-            IGL.Client.Configuration.IssuerName = "[IssuerName]";
-            IGL.Client.Configuration.IssuerSecret = "[IssuerSecret]";
-            IGL.Client.Configuration.ServiceNamespace = "[ServiceNamespace]";                              
+            IGL.Client.Configuration.IssuerName = "IGLGuestClient";
+            IGL.Client.Configuration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
+            IGL.Client.Configuration.ServiceNamespace = "indiegameslab";
 
             // optional       
             IGL.Client.Configuration.GameId = 1;
             IGL.Client.Configuration.PlayerId = "TestingTesting";
 
             ServiceBusListener.OnGameEventReceived += ServiceBusListener_OnGameEventReceived;
-            ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;            
+            ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;
 
-            _stopwath.Start();
+            Console.WriteLine("Retrieving Token....");
+            while (ServiceBusWriter.Token == null)
+            {
+                Thread.Sleep(300);
+            }
 
-            using (var sbl = new Client.ServiceBusListener())
-            {                
+            Console.WriteLine("Token received.");
+            using (var sbl = new Client.ServiceBusListenerThread())
+            {
                 sbl.StartListening();
 
-                while (!Console.KeyAvailable && _stopwath.ElapsedMilliseconds < 10000)
+                _stopwath.Start();
+                while (_stopwath.ElapsedMilliseconds < 10000)
                 {
-                    try
+                    // wait until the token has been received
+                    if (ServiceBusWriter.Token != null)
                     {
-                        var gameevent = new GameEvent
+                        try
                         {
-                            Properties = new Dictionary<string, string>()
+                            var gameevent = new GameEvent
+                            {
+                                Properties = new Dictionary<string, string>()
                            {
                                 { "PlayerName", "Joe Smith" },
                                 { "StartMilliseconds", _stopwath.ElapsedMilliseconds.ToString() }
                             }
-                        };
+                            };
 
-                        IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 100, gameevent);                        
+                            bool wasSuccessful = IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 100, gameevent);
+
+                            if (wasSuccessful)
+                                _sent++;
+
+                            Console.WriteLine(string.Format("Sent message without error: {0}", wasSuccessful));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(string.Format("----------------------------------------"));
+                            Console.WriteLine(string.Format("Echo test error {0}!!!!!!!", ex.GetFullMessage()));
+                            Console.WriteLine(string.Format("----------------------------------------"));
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(string.Format("----------------------------------------"));
-                        Console.WriteLine(string.Format("Echo test error {0}!!!!!!!", ex.GetFullMessage()));
-                        Console.WriteLine(string.Format("----------------------------------------"));
-                    }
+
+                    Thread.Sleep(300);
                 }
-                
-                Thread.Sleep(10000);
-
-                Console.Write("Hit return to end client...");
-                Console.ReadLine();
-
+                Console.WriteLine(string.Format("{0} requests sent.", _sent));                
+                Thread.Sleep(60000);
+                Console.WriteLine("Listener stopping...");
                 sbl.StopListening();
+                Thread.Sleep(5000);
             }
 
-
-            
+            Console.WriteLine(string.Format("{0} messages received.", _received));
+            Console.WriteLine("Hit return to end");
+            Console.ReadLine();
         }
 
         static void ServiceBusListener_OnListenError(object sender, System.IO.ErrorEventArgs e)
@@ -83,6 +101,8 @@ namespace IGL.ConsoleClient
 
         static void ServiceBusListener_OnGameEventReceived(object sender, GamePacketArgs e)
         {
+            _received++;
+
             var elapsed = _stopwath.ElapsedMilliseconds - int.Parse(e.GamePacket.GameEvent.Properties["StartMilliseconds"]);
             Console.WriteLine(string.Format("Echo GameEvent received in \t{0} milliseconds.", elapsed)); 
         }       
