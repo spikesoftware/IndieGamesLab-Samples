@@ -1,14 +1,6 @@
 # IndieGamesLab-Samples
 A collection of messaging samples built using the [IndieGamesLab](https://github.com/spikesoftware/IndieGamesLab) framework.
 
-## Client
-* Console Client
-* Unity Client
-
-## Server
-* Azure Function
-* Azure Cloud Service
-
 ## Technical Requirements
 IGL.Samples is a Visual Studio solution with the following requirements:
 * Visual Studio
@@ -20,8 +12,11 @@ IGL.Samples is a Visual Studio solution with the following requirements:
 Documentation is located at http://indiegameslab.com/.
 
 # Sample Projects
-## Echo Client
+## Console Client
 The Echo Client sends messages to the service bus and listens for response messages from the Echo Server task.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
+
+## Unity Client
+A [Unity](http://www.unity3d.com) implementation of the Echo Client.
 
 ## Echo Server
 The Echo Server reads messages from the service bus, determines the client that sent the message and sends the message back to the client.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
