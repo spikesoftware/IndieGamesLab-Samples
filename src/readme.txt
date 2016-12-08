@@ -1,0 +1,1 @@
+copy the Newtonsoft, IGL.Client and IGL.Common libraries here!

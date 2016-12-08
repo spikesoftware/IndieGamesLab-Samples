@@ -13,12 +13,11 @@
 /src/IGL.Cloud/Profiles/IndieGamesLabProduction.azurePubxml
 /src/IGL.ServiceRole/bin
 /src/IGL.ServiceRole/obj
-/src/IGL.Unity/Assets/IGL/Newtonsoft.Json.dll.meta
-/src/IGL.Unity/Assets/IGL/IGL.Common.dll.meta
-/src/IGL.Unity/Assets/IGL/IGL.Client.dll.meta
+/src/.vs/config
 /src/IGL.Unity/Library
 /src/IGL.Unity/ProjectSettings
 /src/IGL.Unity/IGL.Unity.sln
 /src/IGL.Unity/IGL.Unity.CSharp.csproj
-/src/.vs/config
-/src/IGL.Unity/Assets
+/src/IGL.Unity/Assets/IGL/Newtonsoft.Json.dll.meta
+/src/IGL.Unity/Assets/IGL/IGL.Common.dll.meta
+/src/IGL.Unity/Assets/IGL/IGL.Client.dll.meta

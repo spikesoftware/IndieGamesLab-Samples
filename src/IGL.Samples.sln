@@ -18,6 +18,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EchoFunction", "EchoFunctio
 		AzureFunction\EchoFunction\run.csx = AzureFunction\EchoFunction\run.csx
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IGL.Unity", "IGL.Unity", "{023F323E-EE05-4158-9688-DA30C8630B03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{57E90630-6872-4DB5-BD76-A596E9AD00D0}"
+	ProjectSection(SolutionItems) = preProject
+		IGL.Unity\Assets\EchoScene.unity = IGL.Unity\Assets\EchoScene.unity
+		IGL.Unity\Assets\EchoScene.unity.meta = IGL.Unity\Assets\EchoScene.unity.meta
+		IGL.Unity\Assets\EchoTester.cs = IGL.Unity\Assets\EchoTester.cs
+		IGL.Unity\Assets\EchoTester.cs.meta = IGL.Unity\Assets\EchoTester.cs.meta
+		IGL.Unity\Assets\IGL.meta = IGL.Unity\Assets\IGL.meta
+		IGL.Unity\Assets\IGLActivity.unity = IGL.Unity\Assets\IGLActivity.unity
+		IGL.Unity\Assets\IGLActivity.unity.meta = IGL.Unity\Assets\IGLActivity.unity.meta
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IGL", "IGL", "{AA7D5EAE-3D18-4AD4-A116-835540A07AFB}"
+	ProjectSection(SolutionItems) = preProject
+		readme.txt = readme.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +60,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EF21A0E6-F8AB-4349-9C8A-944DEABB4DBD} = {9272398D-9EA0-4DBB-8D19-B3723AF213C9}
+		{57E90630-6872-4DB5-BD76-A596E9AD00D0} = {023F323E-EE05-4158-9688-DA30C8630B03}
+		{AA7D5EAE-3D18-4AD4-A116-835540A07AFB} = {57E90630-6872-4DB5-BD76-A596E9AD00D0}
 	EndGlobalSection
 EndGlobal
