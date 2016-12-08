@@ -1,6 +1,14 @@
 # IndieGamesLab-Samples
 A collection of messaging samples built using the [IndieGamesLab](https://github.com/spikesoftware/IndieGamesLab) framework.
 
+## Client
+### Console Client
+### Unity Client
+
+## Server
+### Azure Function
+### Azure Cloud Service
+
 ## Technical Requirements
 IGL.Samples is a Visual Studio solution with the following requirements:
 * Visual Studio
