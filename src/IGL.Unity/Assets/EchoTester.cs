@@ -10,7 +10,8 @@ using System.Net.Security;
 using System.Collections.Specialized;
 using System.Linq;
 
-public class EchoTester : MonoBehaviour {
+public class EchoTester : MonoBehaviour
+{
 
     Guid _instance;
     IGL.Client.ServiceBusListener _listener;
@@ -18,23 +19,24 @@ public class EchoTester : MonoBehaviour {
     public UnityEngine.UI.Text MessageDisplay;
     public UnityEngine.UI.Text ButtonListenText;
     private bool _listenForMessages = false;
-    
-    void Start () {
+
+    void Start()
+    {
 
         _instance = Guid.NewGuid();
 
         //// initial setup of IGL
-        IGL.Client.Configuration.IssuerName = "IGLGuestClient";
-        IGL.Client.Configuration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
-        IGL.Client.Configuration.ServiceNamespace = "indiegameslab";
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerName = "IGLGuestClient";
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.ServiceNamespace = "indiegameslab";
 
-        IGL.Client.Configuration.GameId = 100;
-        IGL.Client.Configuration.PlayerId = "TestingTesting";        
+        IGL.Configuration.CommonConfiguration.Instance.GameId = 100;
+        IGL.Configuration.CommonConfiguration.Instance.PlayerId = "TestingTesting";
 
         _listener = new IGL.Client.ServiceBusListener();
-        
+
         IGL.Client.ServiceBusListener.OnGameEventReceived += ServiceBusListener_OnGameEventReceived;
-        IGL.Client.ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;        
+        IGL.Client.ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;
     }
 
     private void ServiceBusListener_OnListenError(object sender, System.IO.ErrorEventArgs e)
@@ -45,17 +47,17 @@ public class EchoTester : MonoBehaviour {
     private void ServiceBusListener_OnGameEventReceived(object sender, IGL.GamePacketArgs e)
     {
         if (e.GamePacket.GameEvent.Properties["Instance"] == null ||
-           e.GamePacket.GameEvent.Properties["Instance"] != _instance.ToString())
+            e.GamePacket.GameEvent.Properties["Instance"] != _instance.ToString())
             return;
 
         var sentTime = DateTime.Parse(e.GamePacket.GameEvent.Properties["Created"]);
-        
-        Debug.LogFormat("Packet:{0} Round Trip in {1} milliseconds.", 
+
+        Debug.LogFormat("Packet:{0} Round Trip in {1} milliseconds.",
                         e.GamePacket.PacketNumber,
                         DateTime.UtcNow.Subtract(sentTime).TotalMilliseconds);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (_listenForMessages == true)
@@ -76,8 +78,8 @@ public class EchoTester : MonoBehaviour {
                 { "Instance", _instance.ToString() }
             }
         };
-        
-        MessageDisplay.text = "Sent message without error: " + IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 1, gameEvent).ToString() + Environment.NewLine + MessageDisplay.text;        
+
+        MessageDisplay.text = "Sent message without error: " + IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 1, gameEvent).ToString() + Environment.NewLine + MessageDisplay.text;
     }
 
     public void StartListening()
@@ -98,7 +100,36 @@ public class EchoTester : MonoBehaviour {
 
     public void SendEchoMessage()
     {
-        StartCoroutine(SubmitGameEvent());
-    }    
-   
+        var gameEvent = new IGL.GameEvent
+        {
+            Properties = new Dictionary<string, string>()
+        {
+            { "Created", DateTime.UtcNow.ToString() },
+            { "Instance", _instance.ToString() }
+        }
+        };
+
+        bool wasSuccessful = IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 1, gameEvent);
+
+        MessageDisplay.text = "Sent message without error: " + wasSuccessful.ToString() + Environment.NewLine + MessageDisplay.text;
+    }
+
+    public void SendArxMessage()
+    {
+        var gameEvent = new IGL.GameEvent
+        {
+            Properties = new Dictionary<string, string>()
+        {
+            { "Created", DateTime.UtcNow.ToString() },
+            { "Instance", _instance.ToString() },
+            { "StatViewModel.Name", "Pyramid" },
+            { "StatViewModel.Value", UnityEngine.Random.Range(700, 950).ToString() },
+        }
+        };
+
+        bool wasSuccessful = IGL.Client.ServiceBusWriter.SubmitGameEvent("arxevent", 1, gameEvent);
+
+        MessageDisplay.text = "Sent message without error: " + wasSuccessful.ToString() + Environment.NewLine + MessageDisplay.text;
+    }
+
 }

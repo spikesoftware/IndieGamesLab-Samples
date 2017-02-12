@@ -24,13 +24,13 @@ namespace IGL.ConsoleClient
             Console.WriteLine("Starting the Echo test...");
 
             // set the following once - this is using ACS            
-            IGL.Client.Configuration.IssuerName = "IGLGuestClient";
-            IGL.Client.Configuration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
-            IGL.Client.Configuration.ServiceNamespace = "indiegameslab";
+            IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerName = "IGLGuestClient";
+            IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
+            IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.ServiceNamespace = "indiegameslab";
 
             // optional       
-            IGL.Client.Configuration.GameId = 1;
-            IGL.Client.Configuration.PlayerId = "TestingTesting";
+            IGL.Configuration.CommonConfiguration.Instance.GameId = 1;
+            IGL.Configuration.CommonConfiguration.Instance.PlayerId = "TestingTesting";
 
             ServiceBusListener.OnGameEventReceived += ServiceBusListener_OnGameEventReceived;
             ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;
