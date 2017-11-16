@@ -1,6 +1,6 @@
-{
+﻿{
   "frameworks": {
-    "net46": {
+    "net46":{
       "dependencies": {
         "WindowsAzure.ServiceBus": "3.4.0",
         "Newtonsoft.Json": "4.0.1",

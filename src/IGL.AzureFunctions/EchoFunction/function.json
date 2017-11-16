@@ -1,0 +1,21 @@
+﻿{
+  "bindings": [
+    {
+      "name": "message",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "echo",
+      "connection": "igl",
+      "accessRights": "Manage"
+    },
+    {
+      "type": "serviceBus",
+      "name": "echoMessage",
+      "topicName": "playerevents",
+      "connection": "igl",
+      "accessRights_": "Manage",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

@@ -23,13 +23,13 @@ public class EchoTester : MonoBehaviour {
 
         _instance = Guid.NewGuid();
 
-        //// initial setup of IGL
-        IGL.Client.Configuration.IssuerName = "IGLGuestClient";
-        IGL.Client.Configuration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
-        IGL.Client.Configuration.ServiceNamespace = "indiegameslab";
+        //// initial setup of IGL        
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerName = "IGLGuestClient";
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.ServiceNamespace = "indiegameslab";
 
-        IGL.Client.Configuration.GameId = 100;
-        IGL.Client.Configuration.PlayerId = "TestingTesting";        
+        IGL.Configuration.CommonConfiguration.Instance.GameId = 100;
+        IGL.Configuration.CommonConfiguration.Instance.PlayerId = "TestingTesting";        
 
         _listener = new IGL.Client.ServiceBusListener();
         

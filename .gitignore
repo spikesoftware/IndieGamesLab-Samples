@@ -15,9 +15,11 @@
 /src/IGL.ServiceRole/obj
 /src/.vs/config
 /src/IGL.Unity/Library
-/src/IGL.Unity/ProjectSettings
 /src/IGL.Unity/IGL.Unity.sln
 /src/IGL.Unity/IGL.Unity.CSharp.csproj
 /src/IGL.Unity/Assets/IGL/Newtonsoft.Json.dll.meta
 /src/IGL.Unity/Assets/IGL/IGL.Common.dll.meta
 /src/IGL.Unity/Assets/IGL/IGL.Client.dll.meta
+/src/IGL.Unity/Temp
+/src/IGL.Unity/Assets.zip
+/src/IGL.Unity/IGL.Unity.csproj

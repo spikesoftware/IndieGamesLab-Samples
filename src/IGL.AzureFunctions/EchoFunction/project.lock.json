@@ -1,0 +1,178 @@
+{
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.6": {
+      "IGL.Common/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Diagnostics.Tracing.EventSource": "1.1.28",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/net35/IGL.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net35/IGL.Common.dll": {}
+        }
+      },
+      "Microsoft.Diagnostics.Tracing.EventRegister/1.1.28": {
+        "type": "package"
+      },
+      "Microsoft.Diagnostics.Tracing.EventSource/1.1.28": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Diagnostics.Tracing.EventRegister": "1.1.28",
+          "Microsoft.Diagnostics.Tracing.EventSource.Redist": "1.1.28"
+        },
+        "compile": {
+          "lib/net40/_._": {}
+        },
+        "runtime": {
+          "lib/net40/_._": {}
+        }
+      },
+      "Microsoft.Diagnostics.Tracing.EventSource.Redist/1.1.28": {
+        "type": "package",
+        "compile": {
+          "lib/net46/Microsoft.Diagnostics.Tracing.EventSource.dll": {}
+        },
+        "runtime": {
+          "lib/net46/Microsoft.Diagnostics.Tracing.EventSource.dll": {}
+        }
+      },
+      "Newtonsoft.Json/4.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/40/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/40/Newtonsoft.Json.dll": {}
+        }
+      },
+      "WindowsAzure.ServiceBus/3.4.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization",
+          "System.ServiceModel",
+          "System.Xml"
+        ],
+        "compile": {
+          "lib/net45-full/Microsoft.ServiceBus.dll": {}
+        },
+        "runtime": {
+          "lib/net45-full/Microsoft.ServiceBus.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IGL.Common/1.1.2": {
+      "sha512": "3O//Rt1bAWBh0h/9JTW1Ags3dRG/FOjAvjPvn22rMif9N4Rh13NgoKl3eAC5ZnLLKGmm+Ef1QcdhtN0UxAOjZw==",
+      "type": "package",
+      "path": "igl.common/1.1.2",
+      "files": [
+        "IGL.Common.1.1.2.nupkg.sha512",
+        "IGL.Common.nuspec",
+        "lib/net35/IGL.Common.dll"
+      ]
+    },
+    "Microsoft.Diagnostics.Tracing.EventRegister/1.1.28": {
+      "sha512": "VXTPYySeOmpMFejW2t4uau3t5h92LYKT9zM3kR06qeUNM9vQxG3S5nB6EhuKyf+F7Ze92Y6614MvjkxH14NJkQ==",
+      "type": "package",
+      "path": "microsoft.diagnostics.tracing.eventregister/1.1.28",
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Diagnostics.Tracing.EventRegister.1.1.28.nupkg.sha512",
+        "Microsoft.Diagnostics.Tracing.EventRegister.nuspec",
+        "build/Microsoft.Diagnostics.Tracing.EventRegister.targets",
+        "build/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "build/eventRegister.exe",
+        "content/net35/_EventRegisterUsersGuide.docx",
+        "content/net40/_EventRegisterUsersGuide.docx",
+        "content/portable-net45+win8+wpa81/_EventRegisterUsersGuide.docx"
+      ]
+    },
+    "Microsoft.Diagnostics.Tracing.EventSource/1.1.28": {
+      "sha512": "qvaf1chd3Z2GBBfqSIyc/CQtX55DAhhT+ptfM0dhk6v4CHvSozpFkeVVeIZFNGR315/V7eEguKtjMCaCw6iLcQ==",
+      "type": "package",
+      "path": "microsoft.diagnostics.tracing.eventsource/1.1.28",
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Diagnostics.Tracing.EventSource.1.1.28.nupkg.sha512",
+        "Microsoft.Diagnostics.Tracing.EventSource.nuspec",
+        "content/_EventSourceUsersGuide.docx",
+        "lib/net35/_._",
+        "lib/net40/_._",
+        "lib/portable-net45+win8+wpa81/_._"
+      ]
+    },
+    "Microsoft.Diagnostics.Tracing.EventSource.Redist/1.1.28": {
+      "sha512": "pn07chRDMdeug9sHbuNlAEZG8ZN3zKgE07IMJG7qPeoQlX6ve01rKTwknKCY/2CVacRP78ONzykV8am84gxc2g==",
+      "type": "package",
+      "path": "microsoft.diagnostics.tracing.eventsource.redist/1.1.28",
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28.nupkg.sha512",
+        "Microsoft.Diagnostics.Tracing.EventSource.Redist.nuspec",
+        "lib/net35/Microsoft.Diagnostics.Tracing.EventSource.XML",
+        "lib/net35/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "lib/net40/Microsoft.Diagnostics.Tracing.EventSource.XML",
+        "lib/net40/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "lib/net46/Microsoft.Diagnostics.Tracing.EventSource.XML",
+        "lib/net46/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "lib/portable-win8+wpa81/Microsoft.Diagnostics.Tracing.EventSource.XML",
+        "lib/portable-win8+wpa81/Microsoft.Diagnostics.Tracing.EventSource.dll"
+      ]
+    },
+    "Newtonsoft.Json/4.0.1": {
+      "sha512": "sdoAI99EGUHx7Hr7j1lfR8dGF+uXP61m5jA9fSej69j282NFej+ElHs1WNKcDAF3iJpOHE3DLjTagjzoX6v78A==",
+      "type": "package",
+      "path": "newtonsoft.json/4.0.1",
+      "files": [
+        "lib/20/Newtonsoft.Json.Net20.dll",
+        "lib/20/Newtonsoft.Json.Net20.pdb",
+        "lib/20/Newtonsoft.Json.Net20.xml",
+        "lib/35/Newtonsoft.Json.Net35.dll",
+        "lib/35/Newtonsoft.Json.Net35.pdb",
+        "lib/35/Newtonsoft.Json.Net35.xml",
+        "lib/40/Newtonsoft.Json.dll",
+        "lib/40/Newtonsoft.Json.pdb",
+        "lib/40/Newtonsoft.Json.xml",
+        "lib/SL/Newtonsoft.Json.Silverlight.dll",
+        "lib/SL/Newtonsoft.Json.Silverlight.pdb",
+        "lib/SL/Newtonsoft.Json.Silverlight.xml",
+        "lib/WP/Newtonsoft.Json.WindowsPhone.dll",
+        "lib/WP/Newtonsoft.Json.WindowsPhone.pdb",
+        "lib/WP/Newtonsoft.Json.WindowsPhone.xml",
+        "newtonsoft.json.4.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
+    "WindowsAzure.ServiceBus/3.4.0": {
+      "sha512": "ZNNXKuiHk97qTgpVtEL12EcUhuGF8jDE+OJ7anB1f/rZEVWpThTpeJDSiM9JEzMRRqYC6w0RCLeXbNwfElsiHg==",
+      "type": "package",
+      "path": "windowsazure.servicebus/3.4.0",
+      "files": [
+        "WindowsAzure.ServiceBus.3.4.0.nupkg.sha512",
+        "WindowsAzure.ServiceBus.nuspec",
+        "content/app.config.install.xdt",
+        "content/web.config.install.xdt",
+        "lib/net45-full/Microsoft.ServiceBus.dll",
+        "lib/net45-full/Microsoft.ServiceBus.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [],
+    ".NETFramework,Version=v4.6": [
+      "IGL.Common >= 1.1.2",
+      "Newtonsoft.Json >= 4.0.1",
+      "WindowsAzure.ServiceBus >= 3.4.0"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {},
+  "packageFolders": {
+    "C:\\Users\\Jeffrey\\.nuget\\packages": {}
+  }
+}
