@@ -18,14 +18,17 @@ public class EchoTester : MonoBehaviour {
     public UnityEngine.UI.Text MessageDisplay;
     public UnityEngine.UI.Text ButtonListenText;
     private bool _listenForMessages = false;
+
+    private Queue<string> _messageQueue;
     
     void Start () {
 
         _instance = Guid.NewGuid();
 
-        //// initial setup of IGL        
-        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerName = "IGLGuestClient";
-        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
+        // initial setup of IGL        
+        // please see http://indiegameslab.com/service/azure-function/ for the status of the Guest Service
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerName = "IGLGuestClient";        
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "zQttoJG+laBopt7WMvbzV5Hk3oq0y6SxSqucjwnP7T4=";
         IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.ServiceNamespace = "indiegameslab";
 
         IGL.Configuration.CommonConfiguration.Instance.GameId = 100;
@@ -34,12 +37,27 @@ public class EchoTester : MonoBehaviour {
         _listener = new IGL.Client.ServiceBusListener();
         
         IGL.Client.ServiceBusListener.OnGameEventReceived += ServiceBusListener_OnGameEventReceived;
-        IGL.Client.ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;        
+        IGL.Client.ServiceBusListener.OnListenError += ServiceBusListener_OnListenError;
+
+        IGL.Client.ServiceBusWriter.OnSubmitError += ServiceBusWriter_OnSubmitError;
+        IGL.Client.ServiceBusWriter.OnSubmitSuccess += ServiceBusWriter_OnSubmitSuccess;
+        
+        _messageQueue = new Queue<string>();
+    }
+
+    private void ServiceBusWriter_OnSubmitSuccess(object sender, IGL.MessageEventArgs e)
+    {
+        _messageQueue.Enqueue("Sent message to service bus without error");        
+    }
+
+    private void ServiceBusWriter_OnSubmitError(object sender, ErrorEventArgs e)
+    {
+        _messageQueue.Enqueue("Failed to send message to service bus.");
     }
 
     private void ServiceBusListener_OnListenError(object sender, System.IO.ErrorEventArgs e)
     {
-        Debug.LogErrorFormat("Error:{0}", e.GetException().Message);
+        _messageQueue.Enqueue(string.Format("Error:{0}", e.GetException().Message));
     }
 
     private void ServiceBusListener_OnGameEventReceived(object sender, IGL.GamePacketArgs e)
@@ -49,18 +67,23 @@ public class EchoTester : MonoBehaviour {
             return;
 
         var sentTime = DateTime.Parse(e.GamePacket.GameEvent.Properties["Created"]);
-        
-        Debug.LogFormat("Packet:{0} Round Trip in {1} milliseconds.", 
-                        e.GamePacket.PacketNumber,
-                        DateTime.UtcNow.Subtract(sentTime).TotalMilliseconds);
-    }
 
-    // Update is called once per frame
-    void Update()
+        _messageQueue.Enqueue(string.Format("Packet:{0} Round Trip in {1} milliseconds.", 
+                        e.GamePacket.PacketNumber,
+                        DateTime.UtcNow.Subtract(sentTime).TotalMilliseconds));
+    }
+    
+    void FixedUpdate()
     {
         if (_listenForMessages == true)
         {
             _listener.ListenForMessages();
+        }
+
+        if(_messageQueue.Count > 0)
+        {
+            // messages need to be added in the main thread
+            MessageDisplay.text = _messageQueue.Dequeue() + Environment.NewLine + MessageDisplay.text;
         }
     }
 
@@ -76,8 +99,13 @@ public class EchoTester : MonoBehaviour {
                 { "Instance", _instance.ToString() }
             }
         };
-        
-        MessageDisplay.text = "Sent message without error: " + IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 1, gameEvent).ToString() + Environment.NewLine + MessageDisplay.text;        
+
+        var wasSuccessful = IGL.Client.ServiceBusWriter.SubmitGameEvent("Echo", 1, gameEvent);
+
+        if (!wasSuccessful)
+        {
+            MessageDisplay.text = "Failed to submit message to service bus." + Environment.NewLine + MessageDisplay.text;
+        }        
     }
 
     public void StartListening()
