@@ -161,10 +161,7 @@ namespace IGL.Client
                 rs.ResponseStream = ResponseStream;
 
                 //  Pass rs.BufferRead to BeginRead. Read data into rs.BufferRead
-                IAsyncResult iarRead = ResponseStream.BeginRead(rs.BufferRead, 0, BUFFER_SIZE, new AsyncCallback(ReadCallBack), rs);
-
-                if (iarRead.IsCompleted != true)
-                    Debug.LogWarning("ServiceBusListener.RespCallback() invalid read.");
+                ResponseStream.BeginRead(rs.BufferRead, 0, BUFFER_SIZE, new AsyncCallback(ReadCallBack), rs);                
             }
             catch(Exception ex)
             {
