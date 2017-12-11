@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -23,3 +23,6 @@
 /src/IGL.Unity/Temp
 /src/IGL.Unity/Assets.zip
 /src/IGL.Unity/IGL.Unity.csproj
+src/IGL.Unity/Assets/AssetBundles/
+src/IGL.Unity/.vs/
+src/IGL.Unity/IGL.Unity.Editor.csproj
