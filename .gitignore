@@ -26,3 +26,5 @@
 src/IGL.Unity/Assets/AssetBundles/
 src/IGL.Unity/.vs/
 src/IGL.Unity/IGL.Unity.Editor.csproj
+src/.vs/IGL.Samples/v15/
+src/UpgradeLog.htm
