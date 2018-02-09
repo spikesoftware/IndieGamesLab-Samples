@@ -16,7 +16,9 @@ Documentation is located at http://indiegameslab.com/.
 The Echo Client sends messages to the service bus and listens for response messages from the Echo Server task.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
 
 ## Unity Client
-A [Unity](http://www.unity3d.com) implementation of the Echo Client.
+A [Unity](http://www.unity3d.com) implementation of two scenes:
+* Echo Client sends messages to the service bus and listens for response messages from the Echo Server task.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
+* Bootstrapper scene that retrieves a bundled scene from Azure storage and loads it.
 
 ## Echo Server
 The Echo Server reads messages from the service bus, determines the client that sent the message and sends the message back to the client.  The sample illustrates basic connectivity and does not enforce handling the messages in any particular order.
