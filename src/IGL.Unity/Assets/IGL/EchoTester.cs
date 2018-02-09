@@ -27,7 +27,7 @@ public class EchoTester : MonoBehaviour
 
         //// initial setup of IGL
         IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerName = "IGLGuestClient";
-        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "2PenhRgdmlf6F1oNglk9Wra1FRH31pcOwbB3q4X0vDs=";
+        IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.IssuerSecret = "zQttoJG+laBopt7WMvbzV5Hk3oq0y6SxSqucjwnP7T4=";
         IGL.Configuration.CommonConfiguration.Instance.BackboneConfiguration.ServiceNamespace = "indiegameslab";
 
         IGL.Configuration.CommonConfiguration.Instance.GameId = 100;
