@@ -27,4 +27,4 @@ The Echo Server reads messages from the service bus, determines the client that 
 The Echo Function is available for testing the basic Echo Client without the need to stand up a server.  This is for those who want to get started with the Client to get an understanding if IGL is for them.  The status of the Echo Function can be view at the IndieGamesLab site on the service tab.
 
 # Call to action!
-What samples would you like created?  Join the community!  Create an issue or use Contact Us on the [http://indiegameslab.com/](IGL website).
+What samples would you like created?  Join the community!
