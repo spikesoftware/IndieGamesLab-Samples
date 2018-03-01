@@ -9,7 +9,7 @@ IGL.Samples is a Visual Studio solution with the following requirements:
 * Azure Subscription
 
 ## IndieGamesLab
-Documentation is located at http://indiegameslab.com/.
+Documentation is located in the wiki [IndieGamesLab-Samples](https://github.com/spikesoftware/IndieGamesLab-Samples/wiki).
 
 # Sample Projects
 ## Console Client
