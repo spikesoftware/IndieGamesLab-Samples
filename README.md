@@ -1,3 +1,5 @@
+Development on IndieGamesLab has ended. The project is kept here as a dev resource.
+
 # IndieGamesLab-Samples
 A collection of messaging samples built using the [IndieGamesLab](https://github.com/spikesoftware/IndieGamesLab) framework.
 
